@@ -37,13 +37,13 @@ def pesquisa():
 
 sg.theme('LightGrey2')
 layout2 = [
-    [sg.Text('Cep'), sg.Input(key='CepPesquisa')],
+    [sg.Text('Cep'), sg.Input(size=(35, 1), key='CepPesquisa')],
     [sg.Output(size=(40, 10), key='_output_')],
     [sg.Button('Pesquisar'), sg.Button('Limpar')]
 ]
 janela = sg.Window('Busca de cep', layout2)
 while True:
-    eventos, valores = janela.read() 
+    eventos, valores = janela.read()
     if eventos == sg.WINDOW_CLOSED:
         break
     if eventos == 'Pesquisar':
@@ -51,4 +51,6 @@ while True:
         print("Aguarde estamos localizando o CEP")
         pesquisa()
     if eventos == 'Limpar':
+        janela.FindElement('CepPesquisa').Update('')
         janela.FindElement('_output_').Update('')
+
